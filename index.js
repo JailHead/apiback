@@ -50,6 +50,20 @@ app.delete('/api/notes/:id', (request, response) => {
   response.status(204).end()
 })
 
+app.post('/api/notes', (request, response) => {
+  const note = request.body;
+  const ids = notes.map(note => note.id)
+  const maxId = Math.max(...ids)
+  const newNote = {
+    id: maxId +1,
+    content: note.content,
+    import: typeof note.important != 'undefined' ? note.important:false,
+    date: new Date().toISOString()
+  }
+  note = notes.concat(newNote)
+  response.json(newNote)
+})
+
 const PORT = 4000;
 
 app.listen(PORT, () => {
