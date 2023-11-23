@@ -2,6 +2,6 @@ POST http://localhost:4000/api/notes
 Content-Type: application/json
 
 {
-    "content": "Esto es una nueva nota"
-    "import": true
+    "content": "Esto es una nueva nota",
+    "important": true
 }
